@@ -1,0 +1,18 @@
+
+    O Django Rest Framework é uma lib excelente para construção e manipulação de dados via API, pois permite, dentro do próprio Framework Django, implementar
+as ações que são típicas de consumo de dados, além das ações essenciais de um CRUD.
+
+Inicialmente, criamos o projeto, depois o app com o nome que desejarmos.
+Após isso, criamos os models, e nesse ponto não podemos esquecer que, no models, é importante criar os campos 'created_at' ou 'created' como desejar, com o campo de modelo
+DateTimeField e os parãmetros auto_now_add, para registrar o momento da criação dos dados. Se necessário, criar um campo 'update' também, com parãmetros auto_now, de forma a registrar os 
+momentos em que os campos forem editados.
+
+    Após isso, vem um ponto muito importante: SERIALIZERS (Todos esses recursos são importados de django_rest_franework), que executam a ação de serializar os dados em JSON, nesse caso,
+para que a API possa gerar e criar os dados no formato correto.
+O serializer consiste em criar um arquivo 'serializer.py', nele importar o model criado e criar uma classe, que herdará de 'serializers.modelSerializer' e dentro dela, terá a classe Meta, que é
+responsável por separar os metadados dos demais atributos, tendo dentro dela o model = modelCriado e o atributo 'fields', sendo uma lista com os campos que se deseja manter visíveis.
+
+Em seguida, é momento de cuidar das urls e das views. Não há segredo nessa parte, mas devemos nos atentar que podemos fazer por funções, por classBasedViews ou até mesmo utilizando recursos do pró-
+prio DjRestFram, que possui o decorator @api-view(['MÉTODOS']), que vai facilitar a manipulação dos dados.
+
+Além dessa forma, há a opção ainda melhor, que vem de django_rest_franework.views que é a 'APIView', bastando instanciar uma classe herdada dela, e criar os métodos 'get, put, post e delete'.
